@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Правила английского языка</title>
+<meta name="description" content="Правила английского языка от A1 до C2: понятные объяснения, примеры с переводом, типичные ошибки и мини-тесты.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-pink:#FCE4F0; --bg-blue:#DDEEFF;
+  --card:rgba(255,255,255,.85); --text:#000; --text-2:#4A4A4A;
+  --accent:#3B6FD8; --accent-h:#2A55B0; --pink:#E0559A;
+  --ok-bg:#E6F7EC; --ok:#1E8E4A; --err-bg:#FDECEC; --err:#C62828;
+  --line:#E6E1EC;
+  --A1:#D7F5E3; --A2:#C9EFD8; --B1:#D6E8FF; --B2:#C4DBFF; --C1:#F6D9EC; --C2:#EFC6E0;
+  --pad:16px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+body{
+  margin:0; min-height:100vh; color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-size:17px; line-height:1.6;
+  background:linear-gradient(135deg,var(--bg-pink) 0%,var(--bg-blue) 100%) fixed;
+  background-color:var(--bg-blue);
+}
+@media(min-width:640px){:root{--pad:24px} body{font-size:18px}}
+@media(min-width:1024px){:root{--pad:32px}}
+a{color:var(--accent)} a:hover{color:var(--accent-h)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+.narrow{max-width:760px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top,0px);
+  background:rgba(252,236,246,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,0,0,.05)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:64px}
+.logo{font-weight:800;font-size:18px;text-decoration:none;color:var(--text);white-space:nowrap;letter-spacing:-.01em}
+.logo span{color:var(--pink)}
+.top-search{flex:1;display:flex;justify-content:flex-end}
+.top-search input{width:100%;max-width:340px}
+.icon-btn{min-width:44px;height:44px;border:0;background:transparent;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 10px;text-decoration:none;color:var(--text);font-weight:600;font-size:15px}
+.icon-btn:hover{background:rgba(255,255,255,.7);color:var(--text)}
+.icon-btn svg{width:22px;height:22px}
+.count{background:var(--text);color:#fff;border-radius:999px;font-size:12px;padding:1px 8px;line-height:18px}
+#searchToggle{display:none}
+@media(max-width:639px){
+  .top-search{display:none}
+  .top-search.open{display:flex;position:absolute;left:0;right:0;top:calc(64px + env(safe-area-inset-top,0px));padding:10px var(--pad);background:rgba(252,236,246,.97);border-bottom:1px solid var(--line)}
+  .top-search.open input{max-width:none}
+  #searchToggle{display:inline-flex;margin-left:auto}
+  .progress-label{display:none}
+}
+
+/* inputs */
+.field{position:relative}
+input[type=search]{font:inherit;font-size:16px;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);width:100%}
+input[type=search]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,111,216,.2)}
+.suggest{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.12);overflow:hidden;z-index:30;display:none}
+.suggest.show{display:block}
+.suggest a{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;text-decoration:none;color:var(--text);font-size:15px}
+.suggest a:hover,.suggest a.active{background:#F3F6FD}
+.suggest small{color:var(--text-2);white-space:nowrap}
+
+/* hero */
+.hero{padding:48px 0 28px}
+.hero h1{font-size:clamp(34px,8vw,64px);line-height:1.04;letter-spacing:-.035em;margin:0 0 14px;font-weight:800;max-width:14ch}
+.hero p{margin:0 0 26px;color:var(--text-2);max-width:46ch}
+.hero .field{max-width:620px}
+.hero input[type=search]{height:56px;font-size:18px;border-radius:16px;padding:0 18px}
+
+/* chips */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin:18px 0 6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(0,0,0,.12);background:rgba(255,255,255,.6);font-weight:600;font-size:15px}
+.chip[aria-pressed=true]{background:var(--text);color:#fff;border-color:var(--text)}
+
+/* grids & cards */
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.grid.sections{grid-template-columns:repeat(4,1fr)} .grid.rules{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);padding:20px;text-decoration:none;color:var(--text);display:block;transition:transform .2s}
+a.card:hover{transform:translateY(-2px);color:var(--text)}
+.sec-card{display:flex;flex-direction:column;gap:6px;min-height:170px}
+.sec-card .ico{font-size:30px;line-height:1}
+.sec-card h3{margin:6px 0 0;font-size:20px;line-height:1.25}
+.sec-card .meta{color:var(--text-2);font-size:14px;margin-top:auto}
+.bar{height:6px;background:rgba(0,0,0,.08);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--accent));border-radius:999px;transition:width .3s}
+.rule-card h3{margin:8px 0 4px;font-size:18px;line-height:1.3}
+.rule-card p{margin:0;color:var(--text-2);font-size:15px;line-height:1.45}
+.rule-card .head{display:flex;align-items:center;gap:8px}
+.rule-card .marks{margin-left:auto;display:flex;gap:4px;font-size:15px}
+.mark-fav{color:var(--pink)} .mark-ok{color:var(--ok)}
+
+.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;color:#000}
+.lv-A1{background:var(--A1)}.lv-A2{background:var(--A2)}.lv-B1{background:var(--B1)}.lv-B2{background:var(--B2)}.lv-C1{background:var(--C1)}.lv-C2{background:var(--C2)}
+
+section.block{margin:36px 0}
+h2{font-size:22px;line-height:1.3;margin:0 0 14px;letter-spacing:-.01em}
+@media(min-width:640px){h2{font-size:28px}}
+.level-group h2{display:flex;align-items:center;gap:10px;font-size:20px}
+.continue{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.continue strong{font-size:18px}
+.muted{color:var(--text-2)}
+
+/* breadcrumbs */
+.crumbs{font-size:14px;color:var(--text-2);padding:18px 0 4px;display:flex;flex-wrap:wrap;gap:6px}
+.crumbs a{color:var(--text-2)}
+.crumbs span[aria-hidden]{opacity:.5}
+
+/* page title */
+.page-title{font-size:clamp(28px,6vw,44px);line-height:1.1;letter-spacing:-.025em;margin:8px 0 10px;font-weight:800}
+
+/* rule page */
+.rule-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px}
+.toggle{min-height:44px;padding:0 16px;border-radius:12px;border:1px solid rgba(0,0,0,.14);background:rgba(255,255,255,.7);font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px}
+.toggle[aria-pressed=true].fav{background:var(--pink);border-color:var(--pink);color:#fff}
+.toggle[aria-pressed=true].learn{background:var(--ok);border-color:var(--ok);color:#fff}
+.summary{font-size:19px;line-height:1.5;margin:0 0 24px;padding-left:16px;border-left:4px solid var(--pink)}
+details.panel{background:var(--card);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);margin:0 0 14px;padding:0 20px}
+details.panel>summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;font-size:19px;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+details.panel>summary::-webkit-details-marker{display:none}
+details.panel>summary::after{content:"";width:10px;height:10px;border-right:2px solid #000;border-bottom:2px solid #000;transform:rotate(45deg);transition:transform .2s;margin-right:4px}
+details.panel[open]>summary::after{transform:rotate(-135deg)}
+.panel-body{padding:0 0 20px}
+.panel-body p{margin:0 0 12px}
+.formula{display:grid;gap:8px}
+.formula div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:600;overflow-x:auto}
+.ex{padding:12px 0;border-top:1px solid var(--line)}
+.ex:first-child{border-top:0;padding-top:0}
+.ex .en{font-size:18px}
+.ex .ru{color:var(--text-2);font-size:16px}
+.ex .note{display:inline-block;font-size:13px;background:#F3F6FD;border-radius:6px;padding:0 8px;margin-top:4px}
+.mist{margin:0 0 14px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.mist .w,.mist .r{padding:10px 14px;display:flex;gap:10px}
+.mist .w{background:var(--err-bg)} .mist .r{background:var(--ok-bg)}
+.mist .w s{text-decoration-color:var(--err);text-decoration-thickness:2px;font-weight:700}
+.mist .why{padding:10px 14px;font-size:15px;color:var(--text-2)}
+.mk{font-weight:800;width:18px;flex:0 0 auto}
+.w .mk{color:var(--err)} .r .mk{color:var(--ok)}
+.notes li{margin-bottom:6px}
+
+/* quiz */
+.quiz{background:var(--card);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);padding:20px;margin:28px 0}
+.quiz h2{margin-bottom:6px}
+.q{border:0;margin:18px 0 0;padding:0}
+.q legend{font-weight:600;margin-bottom:8px;padding:0}
+.opt{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:8px;cursor:pointer}
+.opt input{width:18px;height:18px;accent-color:var(--accent);margin:0}
+.opt.correct{background:var(--ok-bg);border-color:var(--ok)}
+.opt.wrong{background:var(--err-bg);border-color:var(--err)}
+.qexp{font-size:15px;color:var(--text-2);margin:2px 0 0}
+.btn{min-height:44px;padding:0 20px;border-radius:12px;border:0;background:var(--accent);color:#fff;font-weight:700;font-size:16px}
+.btn:hover{background:var(--accent-h)}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,.18);color:var(--text)}
+.btn.ghost:hover{background:rgba(255,255,255,.7)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.quiz-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
+.score{font-weight:800;font-size:20px}
+.pager{display:flex;justify-content:space-between;gap:12px;margin:28px 0 48px}
+.pager a{flex:1;max-width:48%;text-decoration:none}
+.pager a.next{text-align:right;margin-left:auto}
+.pager small{display:block;color:var(--text-2);font-size:13px}
+.pager strong{color:var(--text)}
+
+/* progress */
+.tabs{display:flex;gap:8px;margin:0 0 16px}
+.stat-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;margin-bottom:14px;font-size:15px}
+.stat-row .bar{grid-column:1/-1}
+.big-num{font-size:clamp(40px,10vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.qres{font-size:13px;color:var(--text-2);margin-top:6px}
+.note-box{font-size:14px;color:var(--text-2);margin-top:14px}
+.empty{padding:28px;text-align:center;color:var(--text-2)}
+mark{background:#FFE58A;color:inherit;border-radius:3px;padding:0 1px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:#000;color:#fff;padding:10px 18px;border-radius:12px;font-size:15px;opacity:0;pointer-events:none;transition:.2s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{padding:32px 0 48px;color:var(--text-2);font-size:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#/">Правила <span>английского</span></a>
+    <div class="top-search field" id="topSearch" role="search">
+      <label class="sr" for="topQ">Поиск правила</label>
+      <input type="search" id="topQ" placeholder="Поиск правила…" autocomplete="off">
+      <div class="suggest" id="topSuggest" role="listbox"></div>
+    </div>
+    <button class="icon-btn" id="searchToggle" aria-label="Открыть поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </button>
+    <a class="icon-btn" href="#/progress" aria-label="Мой прогресс">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      <span class="progress-label">Мой прогресс</span>
+      <span class="count" id="learnedCount">0</span>
+    </a>
+  </div>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer><div class="wrap">Правила английского языка · справочник с примерами от A1 до C2 · <a href="#/about">О сайте</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================= DATA ================= */
+const LEVELS=["A1","A2","B1","B2","C1","C2"];
+const SECTIONS=[
+ {slug:"grammar",title:"Грамматика",icon:"📘",desc:"Времена, артикли, модальные глаголы, условные предложения, залог и другие правила построения предложений."},
+ {slug:"vocabulary",title:"Лексика и словообразование",icon:"🔤",desc:"Как образуются слова, какие слова легко перепутать и как выбрать подходящее."},
+ {slug:"pronunciation-spelling",title:"Произношение и правописание",icon:"🗣️",desc:"Как читаются окончания, какие буквы не произносятся и как правильно писать слова."},
+ {slug:"punctuation",title:"Пунктуация",icon:"✍️",desc:"Запятые, апостроф, заглавные буквы и другие знаки, которые в английском ставятся иначе, чем в русском."}
+];
+
+const RULES=[
+/* ---------- GRAMMAR ---------- */
+{slug:"to-be",title:"Глагол to be",section:"grammar",level:"A1",order:1,
+summary:"To be значит «быть, являться». В настоящем времени у него три формы: am, is, are.",
+tags:["быть","есть","am","is","are","глагол"],keywords:["to be","am","is","are","isn't","aren't"],
+explanation:["В русском мы часто пропускаем глагол «быть»: «Я учитель», «Он дома». В английском так нельзя: в предложении обязательно нужен глагол, и если другого нет, ставится to be.","Форма зависит от подлежащего: am — только с I, is — с he, she, it и единственным числом, are — с you, we, they и множественным числом. В разговорной речи используются сокращения: I'm, he's, they're."],
+formula:["I + am","He / She / It + is","You / We / They + are","Отрицание: am not / isn't / aren't","Вопрос: Am / Is / Are + подлежащее …?"],
+examples:[{en:"I **am** a teacher.",ru:"Я учитель."},{en:"She **is** at home.",ru:"Она дома."},{en:"We **are** tired.",ru:"Мы устали."},{en:"**Is** it cold today?",ru:"Сегодня холодно?"},{en:"They **aren't** students.",ru:"Они не студенты."}],
+mistakes:[{wrong:"I **student**.",right:"I **am** a student.",why:"Глагол to be нельзя пропускать, как в русском."},{wrong:"He **are** my brother.",right:"He **is** my brother.",why:"С he, she, it используется is."},{wrong:"**Are** you is ready?",right:"**Are** you ready?",why:"В вопросе глагол to be выносится вперёд один раз."}],
+notes:["Перед существительным в единственном числе обычно нужен артикль: I am a student."],
+quiz:[{q:"My parents ___ at work.",o:["is","am","are"],a:2,e:"Parents — множественное число, нужен are."},{q:"___ she your sister?",o:["Is","Are","Am"],a:0,e:"С she используется is."},{q:"I ___ hungry.",o:["is","am","are"],a:1,e:"С I — только am."}],
+related:["present-simple","articles"]},
+
+{slug:"present-simple",title:"Present Simple",section:"grammar",level:"A1",order:2,
+summary:"Настоящее простое время — для привычек, фактов и расписаний.",
+tags:["время","настоящее","does","do","привычки"],keywords:["present simple","do","does","doesn't","-s"],
+explanation:["Present Simple описывает то, что происходит регулярно (I get up at 7), постоянные факты (Water boils at 100°C) и расписания (The train leaves at 9).","Главная сложность — окончание -s у глагола в 3-м лице единственного числа (he, she, it). В вопросах и отрицаниях появляется вспомогательный глагол do или does, а основной глагол теряет -s."],
+formula:["I / You / We / They + V","He / She / It + V-s","Вопрос: Do / Does + подлежащее + V?","Отрицание: don't / doesn't + V"],
+examples:[{en:"She **works** in a bank.",ru:"Она работает в банке."},{en:"I **drink** tea every morning.",ru:"Я пью чай каждое утро.",note:"привычка"},{en:"The train **leaves** at 7.",ru:"Поезд отправляется в 7.",note:"расписание"},{en:"**Do** you **like** coffee?",ru:"Ты любишь кофе?"},{en:"He **doesn't eat** meat.",ru:"Он не ест мясо."}],
+mistakes:[{wrong:"She **work** in a bank.",right:"She **works** in a bank.",why:"В 3-м лице единственного числа к глаголу добавляется -s."},{wrong:"**Does** she **works** here?",right:"**Does** she **work** here?",why:"После does глагол стоит без -s: окончание уже «забрал» вспомогательный глагол."},{wrong:"He **don't** know.",right:"He **doesn't** know.",why:"С he, she, it используется doesn't."}],
+notes:["have → has, go → goes, do → does, study → studies, watch → watches"],
+quiz:[{q:"He ___ coffee every morning.",o:["drink","drinks","drinking"],a:1,e:"He — 3-е лицо ед. ч., нужен глагол с -s."},{q:"___ they live in Almaty?",o:["Does","Do","Are"],a:1,e:"С they в вопросе используется do."},{q:"My sister ___ like spiders.",o:["don't","doesn't","isn't"],a:1,e:"Sister = she, значит doesn't."}],
+related:["to-be","past-simple","s-ending"]},
+
+{slug:"articles",title:"Артикли a, an, the",section:"grammar",level:"A2",order:3,
+summary:"A/an — «какой-то, один из», the — «тот самый, известный».",
+tags:["артикль","артикли","неопределенный","определенный"],keywords:["a","an","the","article"],
+explanation:["Неопределённый артикль a/an ставится перед исчисляемым существительным в единственном числе, когда мы упоминаем предмет впервые или говорим о любом предмете из многих. An пишется перед гласным звуком: an apple, an hour.","Определённый артикль the используется, когда понятно, о каком именно предмете речь: его уже упоминали, он единственный в своём роде (the sun) или уточнён (the book on the table)."],
+formula:["a + согласный звук: a cat, a university","an + гласный звук: an egg, an hour","the + конкретный, известный предмет"],
+examples:[{en:"I saw **a** dog. **The** dog was black.",ru:"Я видел собаку. Собака была чёрная."},{en:"She is **an** engineer.",ru:"Она инженер."},{en:"**The** sun is hot.",ru:"Солнце горячее.",note:"единственный в мире"},{en:"Close **the** door, please.",ru:"Закрой дверь, пожалуйста."},{en:"It takes **an** hour.",ru:"Это занимает час.",note:"h не читается"}],
+mistakes:[{wrong:"She is **engineer**.",right:"She is **an engineer**.",why:"Перед профессией в единственном числе нужен a/an."},{wrong:"**a** apple",right:"**an** apple",why:"Перед гласным звуком — an."},{wrong:"**an** university",right:"**a** university",why:"Важен звук, а не буква: university начинается со звука [j]."}],
+notes:["С неисчисляемыми и множественным числом a/an не используется: water, books."],
+quiz:[{q:"I need ___ umbrella.",o:["a","an","the"],a:1,e:"Umbrella начинается с гласного звука."},{q:"Look at ___ moon!",o:["a","an","the"],a:2,e:"Луна одна — the."},{q:"He is ___ honest man.",o:["a","an","the"],a:1,e:"В honest h не читается, первый звук гласный."}],
+related:["to-be"]},
+
+{slug:"past-simple",title:"Past Simple",section:"grammar",level:"A2",order:4,
+summary:"Простое прошедшее время — для действий, которые произошли и закончились в прошлом.",
+tags:["прошедшее","время","did","неправильные глаголы"],keywords:["past simple","did","didn't","-ed","yesterday"],
+explanation:["Past Simple используется для законченных действий в прошлом, особенно если указано время: yesterday, last year, in 2010, ago.","У правильных глаголов добавляется окончание -ed (work → worked), у неправильных — особая форма, которую нужно запомнить (go → went). В вопросах и отрицаниях используется did, а глагол возвращается в начальную форму."],
+formula:["Подлежащее + V-ed / 2-я форма","Вопрос: Did + подлежащее + V?","Отрицание: didn't + V"],
+examples:[{en:"I **worked** late yesterday.",ru:"Вчера я работал допоздна."},{en:"We **went** to Paris last year.",ru:"В прошлом году мы ездили в Париж."},{en:"**Did** you **see** the film?",ru:"Ты видел фильм?"},{en:"She **didn't call** me.",ru:"Она мне не позвонила."}],
+mistakes:[{wrong:"**Did** you **went** there?",right:"**Did** you **go** there?",why:"После did глагол стоит в начальной форме."},{wrong:"I **goed** home.",right:"I **went** home.",why:"Go — неправильный глагол, его прошедшая форма went."},{wrong:"I **have seen** him yesterday.",right:"I **saw** him yesterday.",why:"Со словом yesterday используется Past Simple, а не Present Perfect."}],
+notes:["Частые неправильные глаголы: be — was/were, have — had, make — made, see — saw, take — took."],
+quiz:[{q:"She ___ a new car last month.",o:["buys","bought","buyed"],a:1,e:"Buy — неправильный глагол: bought."},{q:"Did he ___ the email?",o:["send","sent","sends"],a:0,e:"После did — начальная форма."},{q:"We ___ watch TV yesterday.",o:["don't","didn't","wasn't"],a:1,e:"Отрицание в Past Simple — didn't + V."}],
+related:["present-perfect","ed-ending"]},
+
+{slug:"present-perfect",title:"Present Perfect",section:"grammar",level:"B1",order:5,
+summary:"Действие в прошлом, результат которого важен сейчас, или опыт без указания времени.",
+tags:["время","перфект","have","has","опыт"],keywords:["present perfect","have done","has been","ever","never","already","yet","just"],
+explanation:["Present Perfect связывает прошлое с настоящим. Нам важен не момент действия, а его результат или сам факт: I have lost my keys (ключей нет сейчас).","Его используют для жизненного опыта (Have you ever been to London?), для действий, которые продолжаются до сих пор (I have lived here for 5 years), и со словами just, already, yet, ever, never."],
+formula:["I / You / We / They + have + V3","He / She / It + has + V3","Вопрос: Have / Has + подлежащее + V3?"],
+examples:[{en:"I **have lost** my keys.",ru:"Я потерял ключи.",note:"их нет сейчас"},{en:"**Have** you ever **been** to Japan?",ru:"Ты когда-нибудь был в Японии?"},{en:"She **has** just **left**.",ru:"Она только что ушла."},{en:"We **have known** each other for 20 years.",ru:"Мы знаем друг друга 20 лет."}],
+mistakes:[{wrong:"I **have seen** him yesterday.",right:"I **saw** him yesterday.",why:"Если указано время в прошлом, нужен Past Simple."},{wrong:"I **live** here since 2015.",right:"I **have lived** here since 2015.",why:"Действие длится до сих пор — нужен Present Perfect."},{wrong:"She **have** finished.",right:"She **has** finished.",why:"С he, she, it — has."}],
+notes:["since + момент (since Monday), for + период (for two weeks)"],
+quiz:[{q:"I ___ never ___ sushi.",o:["have / tried","did / try","has / tried"],a:0,e:"Опыт без указания времени — have + V3."},{q:"She ___ here since 2020.",o:["works","has worked","worked"],a:1,e:"Since + действие до сих пор — Present Perfect."},{q:"We ___ the film last night.",o:["have watched","watched","has watched"],a:1,e:"Last night — конкретное время в прошлом, Past Simple."}],
+related:["past-simple"]},
+
+{slug:"first-conditional",title:"First Conditional",section:"grammar",level:"B1",order:6,
+summary:"Реальное условие в будущем: «если случится это, то будет то».",
+tags:["условные","если","if","будущее"],keywords:["first conditional","if","will","unless"],
+explanation:["Первый тип условных предложений описывает реальные, вероятные ситуации в будущем.","Главная ловушка для русскоговорящих: после if используется настоящее время, хотя по смыслу речь о будущем. Will ставится только в главной части."],
+formula:["If + Present Simple, will + V","will + V + if + Present Simple"],
+examples:[{en:"If it **rains**, we **will stay** at home.",ru:"Если пойдёт дождь, мы останемся дома."},{en:"I **will call** you if I **have** time.",ru:"Я позвоню тебе, если будет время."},{en:"If you **study**, you **will pass**.",ru:"Если будешь заниматься, сдашь."},{en:"**Unless** you hurry, you **will miss** the bus.",ru:"Если не поторопишься, опоздаешь на автобус."}],
+mistakes:[{wrong:"If it **will rain**, we will stay home.",right:"If it **rains**, we will stay home.",why:"После if в условных предложениях will не ставится."},{wrong:"If I have time, I **call** you.",right:"If I have time, I **will call** you.",why:"В главной части нужен will."},{wrong:"**Unless** you **don't** hurry…",right:"**Unless** you hurry…",why:"Unless уже значит «если не», второе отрицание лишнее."}],
+notes:["Запятая ставится, если часть с if стоит в начале."],
+quiz:[{q:"If she ___ late, I'll wait.",o:["will be","is","be"],a:1,e:"После if — Present Simple."},{q:"We ___ the bus if we don't hurry.",o:["miss","will miss","missed"],a:1,e:"В главной части — will + V."},{q:"___ you study, you won't pass.",o:["If","Unless","When"],a:1,e:"Unless = if not."}],
+related:["present-simple"]},
+
+{slug:"passive-voice",title:"Страдательный залог",section:"grammar",level:"B2",order:7,
+summary:"Passive Voice ставит в центр не того, кто делает, а то, что с предметом происходит.",
+tags:["залог","пассив","страдательный","by"],keywords:["passive","be done","was made","is built","by"],
+explanation:["Страдательный залог используют, когда исполнитель неизвестен, неважен или очевиден: My bike was stolen. Он часто встречается в новостях, науке и официальных текстах.","Строится из глагола to be в нужном времени и третьей формы глагола (V3). Если нужно назвать исполнителя, используется by."],
+formula:["be (в нужном времени) + V3","Present: is / are + V3","Past: was / were + V3","Perfect: has / have been + V3","Future: will be + V3"],
+examples:[{en:"English **is spoken** all over the world.",ru:"На английском говорят во всём мире."},{en:"The house **was built** in 1900.",ru:"Дом был построен в 1900 году."},{en:"The letter **has been sent**.",ru:"Письмо отправлено."},{en:"The book **was written by** Tolstoy.",ru:"Книгу написал Толстой."}],
+mistakes:[{wrong:"The house **built** in 1900.",right:"The house **was built** in 1900.",why:"Без глагола to be получается, что дом сам что-то построил."},{wrong:"It was written **from** Tolstoy.",right:"It was written **by** Tolstoy.",why:"Исполнитель в пассиве вводится предлогом by."},{wrong:"The cars **is** made in Japan.",right:"The cars **are** made in Japan.",why:"To be согласуется с подлежащим: cars — множественное число."}],
+notes:["Не все глаголы образуют пассив: happen, arrive, die — нет."],
+quiz:[{q:"The museum ___ in 1850.",o:["opened was","was opened","is open"],a:1,e:"Past Simple Passive: was + V3."},{q:"These phones ___ in China.",o:["are made","is made","make"],a:0,e:"Phones — множественное число, are + V3."},{q:"The report ___ yet.",o:["hasn't been finished","didn't finish","isn't finish"],a:0,e:"Yet → Present Perfect Passive."}],
+related:["present-perfect","past-simple"]},
+
+{slug:"reported-speech",title:"Косвенная речь",section:"grammar",level:"B2",order:8,
+summary:"Когда пересказываем чужие слова после said или told, время обычно сдвигается на шаг в прошлое.",
+tags:["косвенная речь","said","told","согласование времен"],keywords:["reported speech","said","told","asked","backshift"],
+explanation:["В английском действует согласование времён: если вводный глагол в прошедшем времени (said, told), время в пересказе «откатывается» назад: am → was, will → would, have done → had done.","Местоимения и слова времени тоже меняются по смыслу: today → that day, tomorrow → the next day. Вопросы в косвенной речи имеют прямой порядок слов."],
+formula:["Present Simple → Past Simple","Present Continuous → Past Continuous","Past Simple / Present Perfect → Past Perfect","will → would, can → could"],
+examples:[{en:"She said she **was** tired.",ru:"Она сказала, что устала.",note:"«I am tired»"},{en:"He told me he **would** help.",ru:"Он сказал мне, что поможет."},{en:"They said they **had seen** the film.",ru:"Они сказали, что видели фильм."},{en:"She asked where I **lived**.",ru:"Она спросила, где я живу."}],
+mistakes:[{wrong:"He **said me** that…",right:"He **told me** that…",why:"Said употребляется без дополнения, told — с ним."},{wrong:"She asked where **did I live**.",right:"She asked where **I lived**.",why:"В косвенном вопросе прямой порядок слов, без did."},{wrong:"He said he **will** come.",right:"He said he **would** come.",why:"После said will меняется на would."}],
+notes:["Если факт по-прежнему верен, время можно не сдвигать: He said the Earth is round."],
+quiz:[{q:"«I can swim.» → He said he ___ swim.",o:["can","could","will"],a:1,e:"can → could."},{q:"She ___ me she was busy.",o:["said","told","spoke"],a:1,e:"С дополнением (me) — told."},{q:"He asked where ___.",o:["did I work","I worked","do I work"],a:1,e:"Прямой порядок слов в косвенном вопросе."}],
+related:["say-tell","passive-voice"]},
+
+{slug:"inversion",title:"Инверсия",section:"grammar",level:"C1",order:9,
+summary:"После некоторых отрицательных и ограничительных слов в начале предложения порядок слов меняется, как в вопросе.",
+tags:["инверсия","порядок слов","never","hardly","эмфаза"],keywords:["inversion","never have i","hardly","no sooner","not only","rarely"],
+explanation:["Инверсия делает речь выразительной и официальной. Если предложение начинается с never, rarely, hardly, no sooner, not only, little, only then и подобных слов, после них идёт вспомогательный глагол, а затем подлежащее.","В обычной речи эти же мысли выражаются стандартным порядком слов, поэтому инверсия — признак письменного и формального стиля."],
+formula:["Never / Rarely / Seldom + вспом. глагол + подлежащее + V","Hardly … when / No sooner … than","Not only + вспом. глагол + подлежащее …, but also …"],
+examples:[{en:"**Never have I seen** such a beautiful place.",ru:"Никогда я не видел такого красивого места."},{en:"**Rarely does she** complain.",ru:"Она редко жалуется."},{en:"**No sooner had we** arrived **than** it started to rain.",ru:"Не успели мы приехать, как пошёл дождь."},{en:"**Not only is he** smart, but he is also kind.",ru:"Он не только умный, но и добрый."}],
+mistakes:[{wrong:"Never **I have seen** it.",right:"Never **have I seen** it.",why:"После never в начале нужен вопросительный порядок слов."},{wrong:"Rarely **she complains**.",right:"Rarely **does she complain**.",why:"Нужен вспомогательный does, глагол без -s."},{wrong:"No sooner had we arrived **when**…",right:"No sooner had we arrived **than**…",why:"No sooner сочетается с than, а hardly — с when."}],
+notes:[],
+quiz:[{q:"Never ___ such a mess.",o:["I have seen","have I seen","I saw"],a:1,e:"Never в начале → инверсия."},{q:"Hardly had she sat down ___ the phone rang.",o:["than","when","then"],a:1,e:"Hardly … when."},{q:"Not only ___ late, but he also forgot the tickets.",o:["he was","was he","he is"],a:1,e:"Not only в начале → инверсия."}],
+related:["present-perfect","subjunctive"]},
+
+{slug:"subjunctive",title:"Сослагательное наклонение после suggest, insist",section:"grammar",level:"C2",order:10,
+summary:"После глаголов требования и рекомендации в формальном английском используется начальная форма глагола для всех лиц.",
+tags:["сослагательное","subjunctive","suggest","insist","формальный"],keywords:["subjunctive","suggest","insist","demand","recommend","it is essential that"],
+explanation:["После глаголов suggest, insist, demand, recommend, require и выражений it is essential / vital / important that в формальном стиле глагол ставится в начальной форме без to — даже после he, she, it.","Отрицание строится с not перед глаголом, без do. В британском разговорном английском вместо этого часто используют should + V."],
+formula:["suggest / insist / demand + that + подлежащее + V","Отрицание: that + подлежащее + not + V","Британский вариант: that + подлежащее + should + V"],
+examples:[{en:"I suggest that he **see** a doctor.",ru:"Я предлагаю, чтобы он сходил к врачу."},{en:"They insisted that she **be** present.",ru:"Они настояли, чтобы она присутствовала."},{en:"It is essential that everyone **arrive** on time.",ru:"Очень важно, чтобы все пришли вовремя."},{en:"We recommend that he **not travel** alone.",ru:"Мы советуем ему не путешествовать одному."}],
+mistakes:[{wrong:"I suggest that he **sees** a doctor.",right:"I suggest that he **see** a doctor.",why:"В сослагательном наклонении нет окончания -s."},{wrong:"They insisted that she **is** present.",right:"They insisted that she **be** present.",why:"Используется be для всех лиц."},{wrong:"…that he **doesn't** travel alone.",right:"…that he **not** travel alone.",why:"Отрицание — not перед глаголом, без do."}],
+notes:[],
+quiz:[{q:"The doctor recommended that she ___ more.",o:["rests","rest","rested"],a:1,e:"После recommend that — начальная форма."},{q:"It is vital that he ___ informed.",o:["is","be","was"],a:1,e:"Subjunctive: be."},{q:"I suggest that you ___ wait.",o:["don't","not","no"],a:1,e:"Отрицание — not + V."}],
+related:["inversion"]},
+
+/* ---------- VOCABULARY ---------- */
+{slug:"make-do",title:"Make или do",section:"vocabulary",level:"A2",order:1,
+summary:"Make — создать что-то новое, do — выполнить действие, работу или задание.",
+tags:["make","do","делать","коллокации"],keywords:["make","do","make a mistake","do homework"],
+explanation:["Оба глагола переводятся как «делать», но употребляются по-разному. Make обычно означает создание результата: make a cake, make a decision, make noise.","Do — про действия, работу и обязанности: do homework, do the dishes, do sport. Многие сочетания просто нужно запомнить как устойчивые."],
+formula:["make: a mistake, a decision, money, friends, a phone call, noise, a plan","do: homework, housework, business, your best, a favour, exercise"],
+examples:[{en:"I **made** a mistake.",ru:"Я сделал ошибку."},{en:"She **does** her homework after dinner.",ru:"Она делает домашнее задание после ужина."},{en:"Can you **do** me a favour?",ru:"Можешь сделать мне одолжение?"},{en:"We need to **make** a decision.",ru:"Нам нужно принять решение."}],
+mistakes:[{wrong:"I **did** a mistake.",right:"I **made** a mistake.",why:"Устойчивое сочетание — make a mistake."},{wrong:"**Make** your homework!",right:"**Do** your homework!",why:"Homework сочетается с do."},{wrong:"He **does** a lot of money.",right:"He **makes** a lot of money.",why:"Зарабатывать деньги — make money."}],
+notes:[],
+quiz:[{q:"Don't ___ so much noise!",o:["do","make"],a:1,e:"Make noise."},{q:"I always ___ my best.",o:["do","make"],a:0,e:"Do your best."},{q:"She ___ a phone call.",o:["did","made"],a:1,e:"Make a phone call."}],
+related:["say-tell","false-friends"]},
+
+{slug:"say-tell",title:"Say, tell, speak, talk",section:"vocabulary",level:"A2",order:2,
+summary:"Say — сказать слова, tell — сообщить кому-то, speak — говорить (язык, официально), talk — разговаривать.",
+tags:["сказать","говорить","say","tell","speak","talk"],keywords:["say","tell","speak","talk","told me"],
+explanation:["Say передаёт сами слова и обычно используется без указания собеседника: She said hello. Если собеседник нужен — say to somebody.","Tell почти всегда требует, кому говорят: tell me, tell him. Также tell a story, tell the truth, tell a lie. Speak — про языки и официальную речь, talk — про разговор, беседу."],
+formula:["say something (to somebody)","tell somebody something","speak + язык / speak to somebody","talk to / with somebody about something"],
+examples:[{en:"She **said** she was busy.",ru:"Она сказала, что занята."},{en:"**Tell** me the truth.",ru:"Скажи мне правду."},{en:"Do you **speak** English?",ru:"Ты говоришь по-английски?"},{en:"We **talked** about music.",ru:"Мы поговорили о музыке."}],
+mistakes:[{wrong:"He **said me** the news.",right:"He **told me** the news.",why:"С прямым указанием собеседника — tell."},{wrong:"Can you **say** me the time?",right:"Can you **tell** me the time?",why:"Tell somebody something."},{wrong:"I **talk** English.",right:"I **speak** English.",why:"О языках — speak."}],
+notes:[],
+quiz:[{q:"She ___ us a funny story.",o:["said","told","spoke"],a:1,e:"Tell a story."},{q:"He ___ goodbye and left.",o:["said","told","talked"],a:0,e:"Say goodbye."},{q:"How many languages do you ___?",o:["talk","say","speak"],a:2,e:"Speak + язык."}],
+related:["reported-speech","make-do"]},
+
+{slug:"negative-prefixes",title:"Отрицательные приставки",section:"vocabulary",level:"B1",order:3,
+summary:"Приставки un-, in-, im-, il-, ir-, dis- придают слову противоположное значение.",
+tags:["приставки","словообразование","отрицание","un","dis"],keywords:["un-","in-","im-","il-","ir-","dis-","prefix"],
+explanation:["Чаще всего встречается un-: happy → unhappy. In- меняется в зависимости от первой буквы слова: перед p и m — im- (impossible), перед l — il- (illegal), перед r — ir- (irregular).","Dis- часто используется с глаголами и некоторыми прилагательными: agree → disagree, honest → dishonest. Какая приставка подходит конкретному слову, лучше проверять по словарю."],
+formula:["un-: unhappy, unusual, unkind","in-: incorrect, independent","im- (перед p, m): impossible, impolite","il- (перед l): illegal","ir- (перед r): irregular","dis-: dislike, disagree, dishonest"],
+examples:[{en:"It's **impossible** to know.",ru:"Это невозможно узнать."},{en:"Parking here is **illegal**.",ru:"Парковка здесь запрещена."},{en:"I **disagree** with you.",ru:"Я с тобой не согласен."},{en:"He was **unhappy** with the result.",ru:"Он был недоволен результатом."}],
+mistakes:[{wrong:"**unpossible**",right:"**impossible**",why:"Possible принимает приставку im-."},{wrong:"**inlegal**",right:"**illegal**",why:"Перед l — il-, с двумя l."},{wrong:"**unagree**",right:"**disagree**",why:"Agree сочетается с dis-."}],
+notes:[],
+quiz:[{q:"Противоположность «responsible»:",o:["unresponsible","irresponsible","disresponsible"],a:1,e:"Перед r — ir-."},{q:"Противоположность «patient»:",o:["impatient","unpatient","inpatient"],a:0,e:"Перед p — im-."},{q:"Противоположность «like» (глагол):",o:["unlike","dislike","inlike"],a:1,e:"Не любить — dislike."}],
+related:["false-friends"]},
+
+{slug:"false-friends",title:"Ложные друзья переводчика",section:"vocabulary",level:"B2",order:4,
+summary:"Слова, похожие на русские, но с другим значением.",
+tags:["ложные друзья","перевод","похожие слова"],keywords:["false friends","magazine","accurate","sympathetic","fabric","actual"],
+explanation:["Многие английские слова звучат как знакомые русские, но означают совсем другое. Из-за этого легко ошибиться и в переводе, и в собственной речи.","Лучший способ — запоминать такие пары сразу с правильным переводом и примером."],
+formula:["magazine — журнал (не магазин: shop)","accurate — точный (не аккуратный: neat, tidy)","sympathetic — сочувствующий (не симпатичный: nice-looking)","fabric — ткань (не фабрика: factory)","actual — фактический (не актуальный: relevant)"],
+examples:[{en:"I bought a fashion **magazine**.",ru:"Я купила модный журнал."},{en:"The data is **accurate**.",ru:"Данные точные."},{en:"She was very **sympathetic**.",ru:"Она очень сочувствовала."},{en:"This topic is still **relevant**.",ru:"Эта тема всё ещё актуальна."}],
+mistakes:[{wrong:"Let's go to the **magazine**.",right:"Let's go to the **shop**.",why:"Magazine — это журнал."},{wrong:"He is a very **accurate** person.",right:"He is a very **neat** person.",why:"Аккуратный — neat или tidy; accurate — точный."},{wrong:"This question is very **actual**.",right:"This question is very **relevant**.",why:"Актуальный — relevant или topical."}],
+notes:[],
+quiz:[{q:"«Фабрика» по-английски:",o:["fabric","factory","fabrique"],a:1,e:"Fabric — ткань."},{q:"«She is very sympathetic» значит:",o:["Она симпатичная","Она сочувствует","Она весёлая"],a:1,e:"Sympathetic — сочувствующий."},{q:"«Актуальная проблема»:",o:["an actual problem","a relevant problem","an actually problem"],a:1,e:"Актуальный — relevant."}],
+related:["negative-prefixes","make-do"]},
+
+{slug:"formal-informal",title:"Формальная и неформальная лексика",section:"vocabulary",level:"C1",order:5,
+summary:"Для одних и тех же понятий в английском есть слова для делового письма и для разговора.",
+tags:["стиль","формальный","неформальный","деловое письмо"],keywords:["formal","informal","register","obtain","get","purchase","buy"],
+explanation:["В официальных письмах, отчётах и учебных текстах предпочтительны слова латинского происхождения: purchase, obtain, require. В разговоре и дружеской переписке — короткие слова и фразовые глаголы: buy, get, need.","Смешение стилей звучит странно: слишком формальное слово в чате кажется холодным, а разговорное в деловом письме — небрежным."],
+formula:["buy → purchase","get → obtain / receive","need → require","ask for → request","find out → discover / ascertain","help → assist"],
+examples:[{en:"Please **contact** us if you **require** assistance.",ru:"Свяжитесь с нами, если вам нужна помощь.",note:"формально"},{en:"Text me if you **need** help.",ru:"Напиши, если нужна помощь.",note:"неформально"},{en:"Tickets may be **purchased** online.",ru:"Билеты можно приобрести онлайн."},{en:"I'll **find out** and let you know.",ru:"Я выясню и сообщу."}],
+mistakes:[{wrong:"Hey, I **wanna** apply for the position.",right:"I **would like** to apply for the position.",why:"В деловом письме не используют разговорные сокращения."},{wrong:"I **purchased** a sandwich for lunch, mate.",right:"I **bought** a sandwich for lunch, mate.",why:"В непринуждённой речи purchase звучит неуместно."},{wrong:"Dear Sir, **thanks a lot**.",right:"Dear Sir, **thank you very much**.",why:"В официальном письме — полная вежливая форма."}],
+notes:[],
+quiz:[{q:"Формальная замена «get»:",o:["obtain","grab","take"],a:0,e:"Obtain — формальное «получить»."},{q:"Что уместно в письме работодателю?",o:["I wanna join","I would like to join","Gonna join"],a:1,e:"Полная вежливая форма."},{q:"Формальная замена «help»:",o:["assist","back up","sort out"],a:0,e:"Assist."}],
+related:["false-friends"]},
+
+/* ---------- PRONUNCIATION & SPELLING ---------- */
+{slug:"s-ending",title:"Чтение окончания -s / -es",section:"pronunciation-spelling",level:"A2",order:1,
+summary:"Окончание -s читается как [s], [z] или [ɪz] в зависимости от последнего звука слова.",
+tags:["произношение","окончание","s","es","множественное"],keywords:["-s","-es","pronunciation","plural"],
+explanation:["Окончание -s встречается во множественном числе (cats), в 3-м лице глаголов (works) и в притяжательной форме (Tom's). Читается оно тремя способами.","После глухих согласных [p, t, k, f, θ] — [s]; после звонких и гласных — [z]; после шипящих и свистящих [s, z, ʃ, tʃ, dʒ] — [ɪz], и тогда пишется -es."],
+formula:["[s] после p, t, k, f: cats, books, stops","[z] после звонких и гласных: dogs, plays, bags","[ɪz] после s, z, sh, ch, x, ge: buses, watches, boxes, pages"],
+examples:[{en:"cat**s** [kæts]",ru:"кошки"},{en:"dog**s** [dɒgz]",ru:"собаки"},{en:"watch**es** [ˈwɒtʃɪz]",ru:"часы / смотрит"},{en:"She play**s** [pleɪz] tennis.",ru:"Она играет в теннис."}],
+mistakes:[{wrong:"dogs [dɒg**s**]",right:"dogs [dɒg**z**]",why:"После звонкого g окончание звонкое [z]."},{wrong:"**watchs**",right:"**watches**",why:"После ch пишется -es."},{wrong:"pages [peɪdʒ**s**]",right:"pages [ˈpeɪdʒ**ɪz**]",why:"После [dʒ] добавляется слог [ɪz]."}],
+notes:[],
+quiz:[{q:"Как читается -s в «books»?",o:["[s]","[z]","[ɪz]"],a:0,e:"После глухого k — [s]."},{q:"Как читается -es в «boxes»?",o:["[s]","[z]","[ɪz]"],a:2,e:"После x — [ɪz]."},{q:"Как читается -s в «trees»?",o:["[s]","[z]","[ɪz]"],a:1,e:"После гласного — [z]."}],
+related:["ed-ending","present-simple"]},
+
+{slug:"ed-ending",title:"Чтение окончания -ed",section:"pronunciation-spelling",level:"A2",order:2,
+summary:"Окончание -ed читается как [t], [d] или [ɪd].",
+tags:["произношение","окончание","ed","прошедшее"],keywords:["-ed","pronunciation","past"],
+explanation:["У правильных глаголов в прошедшем времени добавляется -ed, но буква e почти никогда не читается отдельно.","После глухих согласных — [t] (worked), после звонких и гласных — [d] (played), а после t и d — отдельный слог [ɪd] (wanted, needed)."],
+formula:["[t] после p, k, s, sh, ch, f: stopped, worked, washed","[d] после звонких и гласных: played, called, opened","[ɪd] после t и d: wanted, decided"],
+examples:[{en:"work**ed** [wɜːkt]",ru:"работал"},{en:"play**ed** [pleɪd]",ru:"играл"},{en:"want**ed** [ˈwɒntɪd]",ru:"хотел"},{en:"She open**ed** [ˈəʊpənd] the window.",ru:"Она открыла окно."}],
+mistakes:[{wrong:"worked [ˈwɜːk**ɪd**]",right:"worked [wɜːk**t**]",why:"Слог [ɪd] появляется только после t и d."},{wrong:"played [pleɪ**t**]",right:"played [pleɪ**d**]",why:"После гласного звука окончание звонкое."},{wrong:"needed [niːd**d**]",right:"needed [ˈniːd**ɪd**]",why:"После d нужен дополнительный слог."}],
+notes:[],
+quiz:[{q:"Как читается -ed в «laughed»?",o:["[t]","[d]","[ɪd]"],a:0,e:"После глухого [f] — [t]."},{q:"Как читается -ed в «started»?",o:["[t]","[d]","[ɪd]"],a:2,e:"После t — [ɪd]."},{q:"Как читается -ed в «cleaned»?",o:["[t]","[d]","[ɪd]"],a:1,e:"После звонкого n — [d]."}],
+related:["s-ending","past-simple"]},
+
+{slug:"silent-letters",title:"Немые буквы",section:"pronunciation-spelling",level:"B1",order:3,
+summary:"Во многих английских словах есть буквы, которые пишутся, но не произносятся.",
+tags:["немые буквы","произношение","чтение"],keywords:["silent letters","knife","write","hour","climb","listen"],
+explanation:["Немые буквы остались от старого произношения: когда-то их читали, потом звук исчез, а написание сохранилось.","Есть повторяющиеся сочетания, которые помогают угадать чтение: kn- в начале слова, wr- в начале, -mb в конце, -stle и -sten в середине."],
+formula:["k в kn-: knife, know, knee","w в wr-: write, wrong","b в -mb: climb, comb, thumb","h в начале: hour, honest","t в -sten / -stle: listen, castle","l: walk, talk, half, could"],
+examples:[{en:"**k**nife [naɪf]",ru:"нож"},{en:"**w**rite [raɪt]",ru:"писать"},{en:"clim**b** [klaɪm]",ru:"взбираться"},{en:"lis**t**en [ˈlɪsn]",ru:"слушать"},{en:"**h**our [ˈaʊə]",ru:"час"}],
+mistakes:[{wrong:"knife [**k**naɪf]",right:"knife [naɪf]",why:"K перед n в начале слова не читается."},{wrong:"walk [wɔː**l**k]",right:"walk [wɔːk]",why:"L в walk и talk не произносится."},{wrong:"a hour",right:"an hour",why:"H немая, слово начинается с гласного звука — нужен an."}],
+notes:[],
+quiz:[{q:"Какая буква не читается в «comb»?",o:["c","m","b"],a:2,e:"B в конце после m — немая."},{q:"Какая буква не читается в «castle»?",o:["s","t","l"],a:1,e:"T в -stle не произносится."},{q:"Какая буква не читается в «wrong»?",o:["w","r","g"],a:0,e:"W в wr- не читается."}],
+related:["homophones","articles"]},
+
+{slug:"homophones",title:"Омофоны: their, there, they're",section:"pronunciation-spelling",level:"B2",order:4,
+summary:"Слова звучат одинаково, но пишутся по-разному и имеют разное значение.",
+tags:["омофоны","правописание","their","there","your"],keywords:["their","there","they're","your","you're","its","it's","to","too","two"],
+explanation:["Омофоны — частая причина ошибок на письме даже у носителей языка. На слух их не различить, поэтому важно понимать значение каждого.","Самые частые пары: their/there/they're, your/you're, its/it's, to/too/two. Сокращения с апострофом всегда можно проверить, раскрыв их: they're = they are."],
+formula:["their — их (принадлежность)","there — там / there is","they're = they are","your — твой / you're = you are","its — его (о предмете) / it's = it is"],
+examples:[{en:"**Their** house is big.",ru:"Их дом большой."},{en:"Put it over **there**.",ru:"Положи это вон туда."},{en:"**They're** late again.",ru:"Они снова опаздывают."},{en:"**It's** cold. The dog wagged **its** tail.",ru:"Холодно. Собака виляла хвостом."}],
+mistakes:[{wrong:"**Your** welcome.",right:"**You're** welcome.",why:"Здесь нужно you are."},{wrong:"The cat licked **it's** paw.",right:"The cat licked **its** paw.",why:"Its — притяжательная форма, без апострофа."},{wrong:"**There** car is red.",right:"**Their** car is red.",why:"Принадлежность — their."}],
+notes:[],
+quiz:[{q:"___ going to the cinema tonight.",o:["Their","There","They're"],a:2,e:"= They are."},{q:"Is this ___ phone?",o:["your","you're"],a:0,e:"Принадлежность — your."},{q:"The company changed ___ logo.",o:["it's","its"],a:1,e:"Принадлежность — its."}],
+related:["apostrophe","silent-letters"]},
+
+/* ---------- PUNCTUATION ---------- */
+{slug:"capital-letters",title:"Заглавные буквы",section:"punctuation",level:"A1",order:1,
+summary:"В английском с большой буквы пишется больше слов, чем в русском: дни недели, месяцы, языки, национальности и I.",
+tags:["заглавные","большая буква","капитализация"],keywords:["capital letters","I","Monday","January","English"],
+explanation:["Как и в русском, с заглавной пишутся начало предложения, имена и названия городов и стран.","Но в английском есть особенности: местоимение I всегда заглавное, а также дни недели, месяцы, праздники, языки и национальности. В заголовках часто пишут с большой буквы все важные слова."],
+formula:["I — всегда заглавная","Дни и месяцы: Monday, January","Языки и национальности: English, Russian, Kazakh","Праздники: Christmas, New Year"],
+examples:[{en:"**I** live in **Pavlodar**.",ru:"Я живу в Павлодаре."},{en:"See you on **Friday**.",ru:"Увидимся в пятницу."},{en:"She speaks **English** and **Kazakh**.",ru:"Она говорит по-английски и по-казахски."},{en:"My birthday is in **March**.",ru:"Мой день рождения в марте."}],
+mistakes:[{wrong:"Yesterday **i** was busy.",right:"Yesterday **I** was busy.",why:"Местоимение I всегда пишется с большой буквы."},{wrong:"on **monday**",right:"on **Monday**",why:"Дни недели — с заглавной."},{wrong:"I learn **english**.",right:"I learn **English**.",why:"Названия языков — с заглавной."}],
+notes:["Времена года пишутся со строчной: spring, summer."],
+quiz:[{q:"Как правильно?",o:["in june","in June"],a:1,e:"Месяцы — с заглавной."},{q:"Как правильно?",o:["He is russian.","He is Russian."],a:1,e:"Национальности — с заглавной."},{q:"Как правильно?",o:["in Winter","in winter"],a:1,e:"Времена года — со строчной."}],
+related:["commas"]},
+
+{slug:"apostrophe",title:"Апостроф",section:"punctuation",level:"B1",order:2,
+summary:"Апостроф показывает сокращение (don't) или принадлежность (Tom's).",
+tags:["апостроф","притяжательный","сокращения"],keywords:["apostrophe","'s","s'","don't","possessive"],
+explanation:["Первое назначение — сокращения: апостроф стоит на месте пропущенных букв (do not → don't, it is → it's).","Второе — притяжательный падеж: Tom's car. Если существительное во множественном числе уже оканчивается на -s, ставится только апостроф: my parents' house. Для обычного множественного числа апостроф не нужен."],
+formula:["Сокращение: I am → I'm, cannot → can't","Ед. ч.: the girl's bag (одной девочки)","Мн. ч. на -s: the girls' bags (нескольких девочек)","Мн. ч. не на -s: children's toys"],
+examples:[{en:"**Anna's** phone is new.",ru:"Телефон Анны новый."},{en:"My **parents'** house is in the village.",ru:"Дом моих родителей в деревне."},{en:"The **children's** room.",ru:"Детская комната."},{en:"I **don't** know.",ru:"Я не знаю."}],
+mistakes:[{wrong:"Fresh **apple's** for sale.",right:"Fresh **apples** for sale.",why:"Для обычного множественного числа апостроф не нужен."},{wrong:"my **parent's** house (двух родителей)",right:"my **parents'** house",why:"Множественное на -s: апостроф после s."},{wrong:"the **childrens'** toys",right:"the **children's** toys",why:"Children не оканчивается на -s, поэтому 's."}],
+notes:[],
+quiz:[{q:"Машина моего брата:",o:["my brothers car","my brother's car","my brothers' car"],a:1,e:"Один брат — 's."},{q:"Комната моих сестёр:",o:["my sisters' room","my sister's room","my sisters room"],a:0,e:"Несколько сестёр — s'."},{q:"Обувь женщин:",o:["womens' shoes","women's shoes","womens shoes"],a:1,e:"Women без -s — 's."}],
+related:["homophones","commas"]},
+
+{slug:"commas",title:"Запятые",section:"punctuation",level:"B1",order:3,
+summary:"В английском запятых меньше, чем в русском: например, перед that и в сложных предложениях с if в конце они не ставятся.",
+tags:["запятая","пунктуация","that","перечисление"],keywords:["comma","that","however","list","if"],
+explanation:["Запятая нужна при перечислении (apples, pears and plums), после вводных слов в начале предложения (However, …), между частями с and/but, если они длинные, и после части с if, если она стоит первой.","Главное отличие от русского: перед that («что», «который») запятая обычно не ставится. Не ставится она и перед if, если придаточное идёт вторым."],
+formula:["Перечисление: A, B and C","Вводное слово: However, …","If-часть первой: If …, …","Перед that — без запятой"],
+examples:[{en:"I think **that** he is right.",ru:"Я думаю, что он прав."},{en:"**However,** it was too late.",ru:"Однако было уже поздно."},{en:"If you're free**,** call me.",ru:"Если ты свободен, позвони."},{en:"Call me **if** you're free.",ru:"Позвони, если ты свободен.",note:"без запятой"}],
+mistakes:[{wrong:"I know**,** that you are busy.",right:"I know that you are busy.",why:"Перед that запятая не ставится."},{wrong:"Call me**,** if you need help.",right:"Call me if you need help.",why:"Если if-часть вторая, запятая обычно не нужна."},{wrong:"However it didn't work.",right:"However**,** it didn't work.",why:"После вводного however в начале нужна запятая."}],
+notes:["Запятая перед and в перечислении (Oxford comma) — дело стиля."],
+quiz:[{q:"Где нужна запятая?",o:["She said, that she was tired.","She said that she was tired."],a:1,e:"Перед that — нет запятой."},{q:"Как правильно?",o:["If it rains we'll stay.","If it rains, we'll stay."],a:1,e:"If-часть первая — запятая."},{q:"Как правильно?",o:["Unfortunately, he left.","Unfortunately he, left."],a:0,e:"После вводного слова в начале."}],
+related:["semicolon-colon","capital-letters"]},
+
+{slug:"semicolon-colon",title:"Точка с запятой и двоеточие",section:"punctuation",level:"C1",order:4,
+summary:"Точка с запятой связывает два близких по смыслу самостоятельных предложения, двоеточие вводит пояснение или список.",
+tags:["точка с запятой","двоеточие","пунктуация"],keywords:["semicolon","colon",";",":","however"],
+explanation:["Точка с запятой (;) ставится между двумя полными предложениями, тесно связанными по смыслу, вместо точки или союза. Часто перед словами however, therefore, otherwise.","Двоеточие (:) вводит то, что раскрывает предыдущую мысль: список, объяснение, цитату. Перед двоеточием должно стоять законченное предложение."],
+formula:["Предложение; предложение","Предложение; however, предложение","Законченное предложение: список / пояснение"],
+examples:[{en:"I love Paris**;** my sister prefers Rome.",ru:"Я люблю Париж, а сестра предпочитает Рим."},{en:"It was late**;** however, we kept working.",ru:"Было поздно, однако мы продолжали работать."},{en:"You need three things**:** a pen, paper and time.",ru:"Вам нужны три вещи: ручка, бумага и время."},{en:"There was one problem**:** no money.",ru:"Была одна проблема: не было денег."}],
+mistakes:[{wrong:"It was late**,** however, we kept working.",right:"It was late**;** however, we kept working.",why:"Два полных предложения с however соединяются точкой с запятой или точкой."},{wrong:"You need**:** a pen and paper.",right:"You need a pen and paper.",why:"Перед двоеточием должно быть законченное предложение."},{wrong:"I love tea**;** and coffee.",right:"I love tea and coffee.",why:"Точка с запятой не ставится перед and внутри одного простого предложения."}],
+notes:[],
+quiz:[{q:"Как правильно?",o:["She was tired, however, she came.","She was tired; however, she came."],a:1,e:"However между предложениями — точка с запятой."},{q:"Где двоеточие уместно?",o:["My favourite colours are: red and blue.","I have two favourite colours: red and blue."],a:1,e:"Перед двоеточием — законченное предложение."},{q:"Точка с запятой соединяет:",o:["два самостоятельных предложения","подлежащее и сказуемое","прилагательное и существительное"],a:0,e:"Только полные предложения."}],
+related:["commas"]}
+];
+
+/* ================= STORAGE ================= */
+const KEY="eng-rules-progress-v1";
+let memStore=null, storageOK=true;
+function blank(){return {favorites:[],learned:[],quizResults:{},lastVisited:null,levelFilter:"all"}}
+function load(){
+  try{const raw=localStorage.getItem(KEY);return raw?Object.assign(blank(),JSON.parse(raw)):blank()}
+  catch(e){storageOK=false;return memStore||(memStore=blank())}
+}
+function save(d){
+  try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){storageOK=false;memStore=d}
+}
+function update(fn){const d=load();fn(d);save(d);refreshCount();return d}
+function refreshCount(){document.getElementById("learnedCount").textContent=load().learned.length}
+
+/* ================= HELPERS ================= */
+const $=s=>document.querySelector(s);
+const app=$("#app");
+const bySlug=Object.fromEntries(RULES.map(r=>[r.slug,r]));
+const secBySlug=Object.fromEntries(SECTIONS.map(s=>[s.slug,s]));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bold=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>");
+const strike=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<s>$1</s>");
+const badge=l=>`<span class="badge lv-${l}">${l}</span>`;
+function plural(n,a,b,c){const m=n%10,h=n%100;if(m===1&&h!==11)return a;if(m>=2&&m<=4&&(h<12||h>14))return b;return c}
+function sortRules(list){return list.slice().sort((x,y)=>LEVELS.indexOf(x.level)-LEVELS.indexOf(y.level)||x.order-y.order)}
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2200)}
+function setMeta(title,desc){document.title=title?title+" — Правила английского":"Правила английского языка";const m=document.querySelector('meta[name=description]');if(desc)m.setAttribute("content",desc)}
+function crumbs(items){return `<nav class="crumbs" aria-label="Навигация">`+items.map((it,i)=>(i?'<span aria-hidden="true">/</span>':"")+(it[1]?`<a href="${it[1]}">${esc(it[0])}</a>`:`<span aria-current="page">${esc(it[0])}</span>`)).join("")+`</nav>`}
+
+function ruleCard(r,q){
+  const d=load();
+  const fav=d.favorites.includes(r.slug),ok=d.learned.includes(r.slug);
+  const qr=d.quizResults[r.slug];
+  const t=q?highlight(r.title,q):esc(r.title), s=q?highlight(r.summary,q):esc(r.summary);
+  return `<a class="card rule-card" href="#/rule/${r.slug}">
+    <div class="head">${badge(r.level)}<span class="muted" style="font-size:13px">${esc(secBySlug[r.section].title)}</span>
+    <span class="marks">${fav?'<span class="mark-fav" title="В избранном" aria-label="В избранном">★</span>':""}${ok?'<span class="mark-ok" title="Изучено" aria-label="Изучено">✓</span>':""}</span></div>
+    <h3>${t}</h3><p>${s}</p>${qr?`<div class="qres">Тест: ${qr.score} из ${qr.total}</div>`:""}</a>`;
+}
+function levelChips(active){
+  return `<div class="chips" role="group" aria-label="Фильтр по уровню">`+["all",...LEVELS].map(l=>`<button class="chip" data-level="${l}" aria-pressed="${active===l}">${l==="all"?"Все":l}</button>`).join("")+`</div>`;
+}
+function bindChips(rerender){
+  app.querySelectorAll(".chip[data-level]").forEach(b=>b.onclick=()=>{update(d=>d.levelFilter=b.dataset.level);rerender()});
+}
+
+/* ================= SEARCH ================= */
+function norm(s){return String(s).toLowerCase().replace(/ё/g,"е").replace(/[*«»"'’.,!?()\/]/g," ").replace(/\s+/g," ").trim()}
+function lev(a,b){if(Math.abs(a.length-b.length)>2)return 9;const m=[];for(let i=0;i<=a.length;i++){m[i]=[i]}for(let j=1;j<=b.length;j++)m[0][j]=j;
+  for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return m[a.length][b.length]}
+const INDEX=RULES.map(r=>{
+  const title=norm(r.title),strong=norm([r.tags.join(" "),r.keywords.join(" ")].join(" ")),weak=norm(r.summary+" "+secBySlug[r.section].title);
+  return {r,title,strong,weak,words:[...new Set((title+" "+strong+" "+weak).split(" ").filter(w=>w.length>1))]};
+});
+function search(q){
+  const nq=norm(q); if(nq.length<2)return [];
+  const terms=nq.split(" ");
+  const res=[];
+  for(const it of INDEX){
+    let score=0;
+    if(it.title.includes(nq))score+=100;
+    if(it.strong.includes(nq))score+=60;
+    if(it.weak.includes(nq))score+=25;
+    for(const t of terms){
+      if(it.title.includes(t))score+=20;else if(it.strong.includes(t))score+=12;else if(it.weak.includes(t))score+=5;
+      else if(t.length>=4){const tol=t.length>=7?2:1;if(it.words.some(w=>lev(t,w.slice(0,t.length+1))<=tol||lev(t,w)<=tol))score+=8;}
+    }
+    if(score>0)res.push({r:it.r,score});
+  }
+  return res.sort((a,b)=>b.score-a.score).map(x=>x.r);
+}
+function highlight(text,q){
+  let out=esc(text);const terms=norm(q).split(" ").filter(t=>t.length>1).sort((a,b)=>b.length-a.length);
+  for(const t of terms){const re=new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","gi");out=out.replace(re,"<mark>$1</mark>")}
+  return out;
+}
+function attachSuggest(input,box){
+  let timer,idx=-1;
+  const render=()=>{
+    const q=input.value;const list=search(q).slice(0,8);idx=-1;
+    if(norm(q).length<2){box.classList.remove("show");box.innerHTML="";return}
+    box.innerHTML=list.length?list.map(r=>`<a href="#/rule/${r.slug}" role="option"><span>${highlight(r.title,q)}</span><small>${esc(secBySlug[r.section].title.split(" ")[0])} · ${r.level}</small></a>`).join(""):`<a href="#/search?q=${encodeURIComponent(q)}"><span>Ничего не найдено. Показать все результаты</span></a>`;
+    box.classList.add("show");
+  };
+  input.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(render,200)});
+  input.addEventListener("keydown",e=>{
+    const items=[...box.querySelectorAll("a")];
+    if(e.key==="ArrowDown"&&items.length){e.preventDefault();idx=(idx+1)%items.length}
+    else if(e.key==="ArrowUp"&&items.length){e.preventDefault();idx=(idx-1+items.length)%items.length}
+    else if(e.key==="Enter"){e.preventDefault();if(idx>=0&&items[idx]){location.hash=items[idx].getAttribute("href").slice(1)}else if(input.value.trim()){location.hash="/search?q="+encodeURIComponent(input.value.trim())}close();input.blur();return}
+    else if(e.key==="Escape"){close();return}
+    items.forEach((a,i)=>a.classList.toggle("active",i===idx));
+  });
+  const close=()=>{box.classList.remove("show")};
+  input.addEventListener("blur",()=>setTimeout(close,150));
+  box.addEventListener("click",()=>{close();input.value="";$("#topSearch").classList.remove("open")});
+}
+
+/* ================= PAGES ================= */
+function pageHome(){
+  setMeta("","Правила английского языка от A1 до C2 с примерами, ошибками и мини-тестами.");
+  const d=load(),lf=d.levelFilter;
+  const last=d.lastVisited&&bySlug[d.lastVisited];
+  app.innerHTML=`<div class="wrap">
+  <section class="hero">
+    <h1>Правила английского без зубрёжки</h1>
+    <p>Выберите тему — внутри короткое объяснение, примеры с переводом, частые ошибки и тест на пару минут.</p>
+    <div class="field" role="search"><label class="sr" for="heroQ">Найти правило</label>
+      <input type="search" id="heroQ" placeholder="Например: Present Perfect, артикли, have been" autocomplete="off">
+      <div class="suggest" id="heroSuggest" role="listbox"></div></div>
+    ${levelChips(lf)}
+  </section>
+  ${last?`<section class="block"><div class="card continue"><span class="muted">Продолжить:</span> ${badge(last.level)} <strong>${esc(last.title)}</strong> <a class="btn" style="margin-left:auto;display:inline-flex;align-items:center;text-decoration:none" href="#/rule/${last.slug}">Открыть правило</a></div></section>`:""}
+  <section class="block"><h2 class="sr">Разделы</h2><div class="grid sections">
+  ${SECTIONS.map(s=>{
+    const all=RULES.filter(r=>r.section===s.slug&&(lf==="all"||r.level===lf));
+    const done=all.filter(r=>d.learned.includes(r.slug)).length;
+    const pct=all.length?Math.round(done/all.length*100):0;
+    return `<a class="card sec-card" href="#/section/${s.slug}"><span class="ico" aria-hidden="true">${s.icon}</span><h3>${esc(s.title)}</h3>
+      <div class="meta">${all.length} ${plural(all.length,"правило","правила","правил")}${lf!=="all"?" уровня "+lf:""} · изучено ${done}</div>
+      <div class="bar" aria-hidden="true"><i style="width:${pct}%"></i></div></a>`}).join("")}
+  </div></section></div>`;
+  attachSuggest($("#heroQ"),$("#heroSuggest"));
+  bindChips(pageHome);
+}
+
+function pageSection(slug){
+  const s=secBySlug[slug]; if(!s)return page404();
+  setMeta(s.title,s.desc);
+  const lf=load().levelFilter;
+  const list=sortRules(RULES.filter(r=>r.section===slug&&(lf==="all"||r.level===lf)));
+  const groups=LEVELS.map(l=>[l,list.filter(r=>r.level===l)]).filter(g=>g[1].length);
+  app.innerHTML=`<div class="wrap">${crumbs([["Главная","#/"],[s.title]])}
+    <h1 class="page-title">${s.icon} ${esc(s.title)}</h1><p class="muted" style="max-width:60ch;margin:0">${esc(s.desc)}</p>
+    ${levelChips(lf)}
+    ${groups.length?groups.map(([l,rs])=>`<section class="block level-group"><h2>${badge(l)} Уровень ${l}</h2><div class="grid rules">${rs.map(r=>ruleCard(r)).join("")}</div></section>`).join("")
+      :`<div class="card empty">Для этого уровня в разделе пока нет правил. Выберите «Все» или другой уровень.</div>`}
+  </div>`;
+  bindChips(()=>pageSection(slug));
+}
+
+function pageRule(slug){
+  const r=bySlug[slug]; if(!r)return page404();
+  setMeta(r.title,r.summary);
+  update(d=>d.lastVisited=slug);
+  const s=secBySlug[r.section];
+  const d=load();
+  const fav=d.favorites.includes(slug),ok=d.learned.includes(slug);
+  const siblings=sortRules(RULES.filter(x=>x.section===r.section));
+  const i=siblings.indexOf(r),prev=siblings[i-1],next=siblings[i+1];
+  app.innerHTML=`<div class="wrap narrow"><article>
+  ${crumbs([["Главная","#/"],[s.title,"#/section/"+s.slug],[r.title]])}
+  <h1 class="page-title">${esc(r.title)}</h1>
+  <div class="rule-head">${badge(r.level)}
+    <button class="toggle fav" id="favBtn" aria-pressed="${fav}">${fav?"★ В избранном":"☆ В избранное"}</button>
+    <button class="toggle learn" id="learnBtn" aria-pressed="${ok}">${ok?"✓ Изучено":"Отметить изученным"}</button>
+  </div>
+  <p class="summary">${esc(r.summary)}</p>
+  <details class="panel" open><summary>Объяснение</summary><div class="panel-body">${r.explanation.map(p=>`<p>${bold(p)}</p>`).join("")}</div></details>
+  ${r.formula&&r.formula.length?`<details class="panel" open><summary>Формула</summary><div class="panel-body formula">${r.formula.map(f=>`<div>${esc(f)}</div>`).join("")}</div></details>`:""}
+  <details class="panel" open><summary>Примеры</summary><div class="panel-body">${r.examples.map(e=>`<div class="ex"><div class="en" lang="en">${bold(e.en)}</div><div class="ru">${esc(e.ru)}</div>${e.note?`<span class="note">${esc(e.note)}</span>`:""}</div>`).join("")}</div></details>
+  <details class="panel" open><summary>Типичные ошибки</summary><div class="panel-body">${r.mistakes.map(m=>`<div class="mist"><div class="w"><span class="mk" aria-label="Неправильно">✕</span><span lang="en">${strike(m.wrong)}</span></div><div class="r"><span class="mk" aria-label="Правильно">✓</span><span lang="en">${bold(m.right)}</span></div><div class="why">${esc(m.why)}</div></div>`).join("")}</div></details>
+  ${r.notes&&r.notes.length?`<details class="panel" open><summary>Важно запомнить</summary><div class="panel-body"><ul class="notes">${r.notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></div></details>`:""}
+  <section class="quiz" id="quiz" aria-labelledby="quizTitle"></section>
+  ${r.related&&r.related.length?`<section class="block"><h2>Связанные правила</h2><div class="grid">${r.related.filter(x=>bySlug[x]).map(x=>ruleCard(bySlug[x])).join("")}</div></section>`:""}
+  <nav class="pager" aria-label="Соседние правила">
+    ${prev?`<a class="card" href="#/rule/${prev.slug}"><small>← Предыдущее</small><strong>${esc(prev.title)}</strong></a>`:"<span></span>"}
+    ${next?`<a class="card next" href="#/rule/${next.slug}"><small>Следующее →</small><strong>${esc(next.title)}</strong></a>`:""}
+  </nav></article></div>`;
+  $("#favBtn").onclick=e=>{
+    const on=update(d=>{d.favorites=d.favorites.includes(slug)?d.favorites.filter(x=>x!==slug):[...d.favorites,slug]}).favorites.includes(slug);
+    e.currentTarget.setAttribute("aria-pressed",on);e.currentTarget.textContent=on?"★ В избранном":"☆ В избранное";
+    toast(storageOK?(on?"Добавлено в избранное":"Убрано из избранного"):"Сохранение недоступно в этом браузере");
+  };
+  $("#learnBtn").onclick=e=>setLearned(slug,!load().learned.includes(slug));
+  renderQuiz(r);
+}
+function setLearned(slug,on){
+  update(d=>{d.learned=on?[...new Set([...d.learned,slug])]:d.learned.filter(x=>x!==slug)});
+  const b=$("#learnBtn");if(b){b.setAttribute("aria-pressed",on);b.textContent=on?"✓ Изучено":"Отметить изученным"}
+  toast(storageOK?(on?"Отмечено как изученное":"Отметка снята"):"Сохранение недоступно в этом браузере");
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function renderQuiz(r,shuffled){
+  const box=$("#quiz");
+  const qs=r.quiz.map((q,qi)=>{const order=q.o.map((_,i)=>i);return {q,qi,order:shuffled?shuffle(order):order}});
+  box.innerHTML=`<h2 id="quizTitle">Проверьте себя</h2><p class="muted" style="margin:0">${qs.length} ${plural(qs.length,"вопрос","вопроса","вопросов")}. Выберите ответы и нажмите «Проверить».</p>
+  ${qs.map(({q,qi,order})=>`<fieldset class="q" data-q="${qi}"><legend>${qi+1}. <span lang="en">${esc(q.q)}</span></legend>
+    ${order.map(oi=>`<label class="opt" data-o="${oi}"><input type="radio" name="q${qi}" value="${oi}"><span>${esc(q.o[oi])}</span></label>`).join("")}
+    <p class="qexp" hidden>${esc(q.e)}</p></fieldset>`).join("")}
+  <div class="quiz-actions"><button class="btn" id="checkBtn" disabled>Проверить</button><span id="quizResult" aria-live="polite"></span></div>`;
+  const check=$("#checkBtn");
+  box.addEventListener("change",()=>{check.disabled=box.querySelectorAll("input:checked").length<qs.length});
+  check.onclick=()=>{
+    let score=0;
+    qs.forEach(({q,qi})=>{
+      const fs=box.querySelector(`[data-q="${qi}"]`);const sel=+fs.querySelector("input:checked").value;
+      if(sel===q.a)score++;
+      fs.querySelectorAll(".opt").forEach(l=>{const o=+l.dataset.o;l.querySelector("input").disabled=true;if(o===q.a)l.classList.add("correct");else if(o===sel)l.classList.add("wrong")});
+      fs.querySelector(".qexp").hidden=false;
+    });
+    update(d=>d.quizResults[r.slug]={score,total:qs.length,date:new Date().toISOString().slice(0,10)});
+    const already=load().learned.includes(r.slug);
+    $("#quizResult").innerHTML="";
+    const actions=box.querySelector(".quiz-actions");
+    actions.innerHTML=`<span class="score">Правильно ${score} из ${qs.length}</span>
+      ${score===qs.length&&!already?`<button class="btn" id="markLearned">Отметить правило изученным</button>`:""}
+      <button class="btn ghost" id="retryBtn">Пройти заново</button>`;
+    const ml=$("#markLearned");if(ml)ml.onclick=()=>{setLearned(r.slug,true);ml.remove()};
+    $("#retryBtn").onclick=()=>renderQuiz(r,true);
+  };
+}
+
+function pageSearch(q){
+  setMeta("Поиск","Поиск по правилам английского языка");
+  const all=search(q);
+  const params=new URLSearchParams(location.hash.split("?")[1]||"");
+  const fs=params.get("s")||"all",fl=params.get("l")||"all";
+  const list=all.filter(r=>(fs==="all"||r.section===fs)&&(fl==="all"||r.level===fl));
+  const link=(s,l)=>`#/search?q=${encodeURIComponent(q)}&s=${s}&l=${l}`;
+  app.innerHTML=`<div class="wrap">${crumbs([["Главная","#/"],["Поиск"]])}
+  <h1 class="page-title">Поиск</h1>
+  <div class="field" role="search" style="max-width:620px"><label class="sr" for="pageQ">Найти правило</label><input type="search" id="pageQ" value="${esc(q)}" autocomplete="off"><div class="suggest" id="pageSuggest"></div></div>
+  <div class="chips" aria-label="Раздел"><a class="chip" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit" aria-pressed="${fs==="all"}" href="${link("all",fl)}">Все разделы</a>${SECTIONS.map(s=>`<a class="chip" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit" aria-pressed="${fs===s.slug}" href="${link(s.slug,fl)}">${esc(s.title)}</a>`).join("")}</div>
+  <div class="chips" aria-label="Уровень" style="margin-top:0">${["all",...LEVELS].map(l=>`<a class="chip" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit" aria-pressed="${fl===l}" href="${link(fs,l)}">${l==="all"?"Все уровни":l}</a>`).join("")}</div>
+  ${q?`<p class="muted">${list.length?`Найдено: ${list.length}`:""}</p>`:""}
+  ${list.length?`<div class="grid rules">${list.map(r=>ruleCard(r,q)).join("")}</div>`
+   :`<div class="card empty">${q?`Ничего не найдено по запросу «${esc(q)}». Попробуйте другое слово или откройте раздел:`:"Введите название правила или английское слово."}<div class="chips" style="justify-content:center">${SECTIONS.map(s=>`<a class="chip" style="display:inline-flex;align-items:center;text-decoration:none;color:inherit" href="#/section/${s.slug}">${esc(s.title)}</a>`).join("")}</div></div>`}
+  </div>`;
+  /* style for pressed link chips */
+  app.querySelectorAll('a.chip[aria-pressed=true]').forEach(a=>{a.style.background="#000";a.style.color="#fff";a.style.borderColor="#000"});
+  attachSuggest($("#pageQ"),$("#pageSuggest"));
+}
+
+function pageProgress(tab){
+  setMeta("Мой прогресс","Избранные и изученные правила");
+  tab=tab||"favorites";
+  const d=load();
+  const total=RULES.length,done=d.learned.filter(s=>bySlug[s]).length;
+  const list=(tab==="favorites"?d.favorites:d.learned).filter(s=>bySlug[s]).map(s=>bySlug[s]);
+  app.innerHTML=`<div class="wrap">${crumbs([["Главная","#/"],["Мой прогресс"]])}
+  <h1 class="page-title">Мой прогресс</h1>
+  <div class="grid" style="margin-top:20px">
+    <div class="card"><div class="big-num">${done}<span style="font-size:.4em;color:var(--text-2);letter-spacing:0"> из ${total}</span></div>
+      <p class="muted" style="margin:8px 0 12px">${plural(done,"правило изучено","правила изучено","правил изучено")}</p>
+      <div class="bar"><i style="width:${Math.round(done/total*100)}%"></i></div></div>
+    <div class="card">
+      ${SECTIONS.map(s=>{const a=RULES.filter(r=>r.section===s.slug),k=a.filter(r=>d.learned.includes(r.slug)).length;return `<div class="stat-row"><span>${s.icon} ${esc(s.title)}</span><span class="muted">${k}/${a.length}</span><div class="bar"><i style="width:${a.length?k/a.length*100:0}%"></i></div></div>`}).join("")}
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">${LEVELS.map(l=>{const a=RULES.filter(r=>r.level===l),k=a.filter(r=>d.learned.includes(r.slug)).length;return a.length?`<div class="stat-row">${badge(l)}<span class="muted">${k}/${a.length}</span><div class="bar"><i style="width:${k/a.length*100}%"></i></div></div>`:""}).join("")}</div>
+  <section class="block">
+    <div class="tabs" role="tablist">
+      <button class="chip" role="tab" aria-selected="${tab==="favorites"}" aria-pressed="${tab==="favorites"}" data-tab="favorites">★ Избранное (${d.favorites.length})</button>
+      <button class="chip" role="tab" aria-selected="${tab==="learned"}" aria-pressed="${tab==="learned"}" data-tab="learned">✓ Изучено (${d.learned.length})</button>
+    </div>
+    ${list.length?`<div class="grid rules">${sortRules(list).map(r=>ruleCard(r)).join("")}</div>`
+      :`<div class="card empty">${tab==="favorites"?"Здесь появятся правила, которые вы добавите в избранное кнопкой «☆ В избранное».":"Здесь появятся правила, которые вы отметите изученными. Пройдите тест без ошибок, чтобы отметить правило."}<div style="margin-top:14px"><a class="btn" style="display:inline-flex;align-items:center;text-decoration:none" href="#/">Выбрать правило</a></div></div>`}
+  </section>
+  <p class="note-box">Прогресс хранится только в этом браузере.${storageOK?"":" Сейчас сохранение недоступно: данные пропадут после перезагрузки."}</p>
+  <button class="btn ghost" id="resetBtn" style="margin-bottom:24px">Сбросить прогресс</button>
+  </div>`;
+  app.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>pageProgress(b.dataset.tab));
+  $("#resetBtn").onclick=()=>{if(confirm("Удалить избранное, отметки и результаты тестов?")){save(blank());refreshCount();pageProgress();toast("Прогресс сброшен")}};
+}
+
+function pageAbout(){
+  setMeta("О сайте","Как пользоваться справочником правил английского языка");
+  app.innerHTML=`<div class="wrap narrow">${crumbs([["Главная","#/"],["О сайте"]])}
+  <h1 class="page-title">О сайте</h1>
+  <div class="card"><p>Это бесплатный справочник правил английского языка. Объяснения написаны на русском, примеры даны на английском с переводом.</p>
+  <p><b>Как пользоваться.</b> Выберите раздел на главной или найдите правило через поиск. На странице правила прочитайте объяснение, посмотрите примеры и типичные ошибки, затем пройдите короткий тест. Отмечайте правила изученными и добавляйте в избранное, чтобы вернуться к ним позже.</p>
+  <p><b>Уровни.</b> A1–A2 — начальный уровень, B1–B2 — средний, C1–C2 — продвинутый. Фильтр уровня на главной помогает видеть только подходящие правила.</p>
+  <p style="margin:0"><b>Прогресс</b> сохраняется в вашем браузере, регистрация не нужна.</p></div></div>`;
+}
+
+function page404(){
+  setMeta("Страница не найдена");
+  app.innerHTML=`<div class="wrap narrow" style="padding:60px 0"><h1 class="page-title">Страница не найдена</h1><p class="muted">Такой страницы нет. Найдите правило через поиск или вернитесь на главную.</p><a class="btn" style="display:inline-flex;align-items:center;text-decoration:none" href="#/">На главную</a></div>`;
+}
+
+/* ================= ROUTER ================= */
+function route(){
+  const h=decodeURI(location.hash.replace(/^#/,""))||"/";
+  const [path,qs]=h.split("?");
+  const parts=path.split("/").filter(Boolean);
+  if(!parts.length)pageHome();
+  else if(parts[0]==="section")pageSection(parts[1]);
+  else if(parts[0]==="rule")pageRule(parts[1]);
+  else if(parts[0]==="search")pageSearch(new URLSearchParams(qs||"").get("q")||"");
+  else if(parts[0]==="progress")pageProgress();
+  else if(parts[0]==="about")pageAbout();
+  else page404();
+  window.scrollTo(0,0);
+  refreshCount();
+}
+window.addEventListener("hashchange",route);
+attachSuggest($("#topQ"),$("#topSuggest"));
+$("#searchToggle").onclick=()=>{const t=$("#topSearch");t.classList.toggle("open");if(t.classList.contains("open"))$("#topQ").focus()};
+route();
+</script>
+</body>
+</html>
